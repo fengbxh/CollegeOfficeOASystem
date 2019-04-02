@@ -19,37 +19,49 @@
         <result column="doorPlates_count" property="doorplatesCount" jdbcType="INTEGER"/>
         <result column="remarks" property="remarks" jdbcType="NVARCHAR"/>
     </resultMap>
+    <resultMap id="PageResultMap" type="cn.edu.usts.model.RoomInfoModel">
+        <id column="ID" property="id" jdbcType="INTEGER" />
+        <result column="campus" property="campus" jdbcType="NVARCHAR"/>
+        <result column="college" property="college" jdbcType="NVARCHAR"/>
+        <result column="building_name" property="buildingName" jdbcType="NVARCHAR"/>
+        <result column="floor" property="floor" jdbcType="INTEGER"/>
+        <result column="room_number" property="roomNumber" jdbcType="NVARCHAR"/>
+        <result column="room_name" property="roomName" jdbcType="NVARCHAR"/>
+        <result column="room_classification" property="roomClassification" jdbcType="NVARCHAR" />
+        <result column="usage_area" property="usageArea" jdbcType="DECIMAL"/>
+        <result column="key_admin" property="keyAdmin" jdbcType="NVARCHAR" />
+    </resultMap>
     <!-- 查询用户记录总数 -->
     <select id="selectCount" resultType="int">
 		select count(*) from RoomInfo
     </select>
-    <select id="SelectRoomByPage" parameterType="java.lang.Integer" >
-    SELECT top ${pageSize}
-	p.ID,
-	campus,
-	college,
-	building_name,
-	p.floor,
-	room_number,
-	room_name,
-	RoomType.room_classification,
-	usage_area,
-	stuff((
-		SELECT
-			',' + TeacherPersonalInfo.te_name
-		FROM
-			RoomUserMaps
-			INNER JOIN TeacherPersonalInfo ON TeacherPersonalInfo.te_id = RoomUserMaps.teacher_id
-		WHERE
-			p.ID = RoomUserMaps.roominfo_id FOR xml path ( '' )),
-		1,
-		1,
-		''
-	) AS key_admin
-from (select row_number() over(order by ID asc) as rownumber,* from RoomInfo) as p
+    <select id="findRoomByPage" parameterType="java.lang.Integer" resultMap="PageResultMap">
+        SELECT top ${pageSize}
+        p.ID,
+        campus,
+        college,
+        building_name,
+        p.floor,
+        room_number,
+        room_name,
+        RoomType.room_classification,
+        usage_area,
+        stuff((
+            SELECT
+                ',' + TeacherPersonalInfo.te_name
+            FROM
+                RoomUserMaps
+                INNER JOIN TeacherPersonalInfo ON TeacherPersonalInfo.te_id = RoomUserMaps.teacher_id
+            WHERE
+                p.ID = RoomUserMaps.roominfo_id FOR xml path ( '' )),
+            1,
+            1,
+            ''
+        ) AS key_admin
+    from (select row_number() over(order by ID asc) as rownumber,* from RoomInfo) as p
 
-	LEFT JOIN RoomType ON RoomType.ID = p.room_type_id
-	where rownumber>((#{pageIndex}-1)*#{pageSize});
+        LEFT JOIN RoomType ON RoomType.ID = p.room_type_id
+        where rownumber>((#{pageIndex}-1)*#{pageSize});
   </select>
     <sql id="Example_Where_Clause">
         <where>

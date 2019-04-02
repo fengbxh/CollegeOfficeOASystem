@@ -27,4 +27,8 @@ public interface RoominfoMapper {
     int updateByPrimaryKeySelective(Roominfo record);
 
     int updateByPrimaryKey(Roominfo record);
+
+    int selectCount();
+
+    List<Roominfo> findRoomByPage(@Param("pageIndex")Integer pageIndex,@Param("pageSize")Integer pageSize);
 }
