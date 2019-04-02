@@ -251,13 +251,7 @@
                         <overwrite>true</overwrite>
                         <verbose>true</verbose>
                     </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.microsoft.sqlserver</groupId>
-                            <artifactId>sqljdbc4</artifactId>
-                            <version>4.0</version>
-                        </dependency>
-                    </dependencies>
+
                 </plugin>
 
             </plugins>
