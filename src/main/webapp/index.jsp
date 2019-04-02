@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -9,9 +9,10 @@
     <title>后台管理</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="./static/css/font.css">
     <link rel="stylesheet" href="./static/css/weadmin.css">
     <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
@@ -81,13 +82,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./pages/article/list.html">
+                        <a _href="./pages/room/list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>房间信息列表</cite>
                         </a>
                     </li>
                     <li>
-                        <a _href="./pages/article/list.html">
+                        <a _href="./pages/room/add.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>新增房间信息</cite>
                         </a>
@@ -253,15 +254,14 @@
 <!-- 底部结束 -->
 
 
-
 <script type="text/javascript">
     layui.config({
         base: './static/js/',
         version: '101100'
     }).use('admin');
-    layui.use(['jquery', 'admin'], function() {
+    layui.use(['jquery', 'admin'], function () {
         var $ = layui.jquery;
-        $(function() {
+        $(function () {
             var login = JSON.parse(localStorage.getItem("login"));
             if (login) {
                 if (login = 0) {
