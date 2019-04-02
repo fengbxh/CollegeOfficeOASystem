@@ -10,7 +10,7 @@ public class RoomInfoModel {
     private String roomName;
     private String roomClassification;
     private Long usageArea;
-    private String keyAdmin;
+    private String userName;
 
     public Integer getId() {
         return id;
@@ -82,11 +82,11 @@ public class RoomInfoModel {
         this.usageArea = usageArea;
     }
 
-    public String getKeyAdmin() {
-        return keyAdmin;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setKeyAdmin(String keyAdmin) {
-        this.keyAdmin = keyAdmin == null ? null : keyAdmin.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null :userName.trim();
     }
 }

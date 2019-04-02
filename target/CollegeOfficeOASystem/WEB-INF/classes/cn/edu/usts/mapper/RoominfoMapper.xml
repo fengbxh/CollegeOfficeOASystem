@@ -29,13 +29,13 @@
         <result column="room_name" property="roomName" jdbcType="NVARCHAR"/>
         <result column="room_classification" property="roomClassification" jdbcType="NVARCHAR" />
         <result column="usage_area" property="usageArea" jdbcType="DECIMAL"/>
-        <result column="key_admin" property="keyAdmin" jdbcType="NVARCHAR" />
+        <result column="username" property="userName" jdbcType="NVARCHAR" />
     </resultMap>
     <!-- 查询用户记录总数 -->
     <select id="selectCount" resultType="int">
 		select count(*) from RoomInfo
     </select>
-    <select id="findRoomByPage" parameterType="java.lang.Integer" resultMap="PageResultMap">
+    <select id="findRoomInfoByPage" parameterType="java.lang.Integer" resultMap="PageResultMap">
         SELECT top ${pageSize}
         p.ID,
         campus,
@@ -48,7 +48,7 @@
         usage_area,
         stuff((
             SELECT
-                ',' + TeacherPersonalInfo.te_name
+                ',' + TeacherPersonalInfo.te_name ++'('+TeacherPersonalInfo.te_id +')'
             FROM
                 RoomUserMaps
                 INNER JOIN TeacherPersonalInfo ON TeacherPersonalInfo.te_id = RoomUserMaps.teacher_id
@@ -57,7 +57,7 @@
             1,
             1,
             ''
-        ) AS key_admin
+        ) AS username
     from (select row_number() over(order by ID asc) as rownumber,* from RoomInfo) as p
 
         LEFT JOIN RoomType ON RoomType.ID = p.room_type_id

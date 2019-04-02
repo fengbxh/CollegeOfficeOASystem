@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>学院综合办公管理系统——教师信息管理</title>
+    <title>学院综合办公管理系统——房间信息管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -22,9 +22,9 @@
 <div class="weadmin-nav">
 			<span class="layui-breadcrumb">
         <a href="">首页</a>
-        <a href="">教师信息管理</a>
+        <a href="">房间信息管理</a>
         <a>
-          <cite>教师信息列表</cite></a>
+          <cite>房间信息列表</cite></a>
       </span>
     <a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right"
        href="javascript:location.replace(location.href);" title="刷新">
@@ -63,19 +63,16 @@
                 <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i
                         class="layui-icon">&#xe605;</i></div>
             </th>
-            <th>职工号</th>
-            <th>姓名</th>
-            <th>年龄</th>
-            <th>出生日期</th>
-            <th>学历</th>
-            <th>毕业学校</th>
-            <th>所学专业</th>
-            <th>邮箱</th>
-            <th>手机号码</th>
-            <th>办公室电话</th>
-            <th>通讯地址</th>
-            <th>其他联系方式</th>
-            <th>高级人才工程</th>
+            <th>ID</th>
+            <th>校区</th>
+            <th>学院</th>
+            <th>所在楼名称</th>
+            <th>所属楼层</th>
+            <th>房号</th>
+            <th>房间名称</th>
+            <th>房间类型</th>
+            <th>使用面积</th>
+            <th>使用人</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -141,17 +138,17 @@
 <script type="text/javascript">
     //页面初始化加载
     $(function () {
-        getPeopleList(1);
+        getRoomInfoList(1);
         console.log("页面初始化加载完成");
     });
 
     //获取数据方法
-    function getPeopleList(currentPage) {
+    function getRoomInfoList(currentPage) {
         console.log("进入getPeopleList方法");
         console.log("currentPage=" + currentPage);
         //获取数据库分页信息并绑定显示到网页页面中
         $.ajax({
-            url: '/teacher/selectTeacherByPage',
+            url: '/room/findRoomInfoByPage',
             type: 'post',
             data: {
                 "currentPage": currentPage || 1,
@@ -168,19 +165,16 @@
                 for (var i = 0; i < len; i++) {
                     var htmlbuf = '<tr>' +
                         '<td>' + '<div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id="1"><i class="layui-icon">&#xe605;</i></div>' + '</td>' +
-                        '<td name=\'teId\'>' + val[i].teId + '</td>' +
-                        '<td>' + val[i].teName + '</td>' +
-                        '<td>' + val[i].teAge + '</td>' +
-                        '<td>' + val[i].teBirthday + '</td>' +
-                        '<td>' + val[i].education + '</td>' +
-                        '<td>' + val[i].graduateSchool + '</td>' +
-                        '<td>' + val[i].speciality + '</td>' +
-                        '<td>' + val[i].teEmail + '</td>' +
-                        '<td>' + val[i].tePhone + '</td>' +
-                        '<td>' + val[i].officePhone + '</td>' +
-                        '<td>' + val[i].postalAddress + '</td>' +
-                        '<td>' + val[i].otherContact + '</td>' +
-                        '<td>' + val[i].seniorTalentProject + '</td>' +
+                        '<td name=\'Id\'>' + val[i].id + '</td>' +
+                        '<td>' + val[i].campus + '</td>' +
+                        '<td>' + val[i].college + '</td>' +
+                        '<td>' + val[i].buildingName + '</td>' +
+                        '<td>' + val[i].floor + '</td>' +
+                        '<td>' + val[i].roomNumber + '</td>' +
+                        '<td>' + val[i].roomName + '</td>' +
+                        '<td>' + val[i].roomClassification + '</td>' +
+                        '<td>' + val[i].usageArea + '</td>' +
+                        '<td>' + val[i].userName + '</td>' +
                         '<td class="td-manage">' + '<a onclick="member_stop(this,\'10001\')" href="javascript:;" title="启用">' +
                         '<i class="layui-icon">&#xe601;</i>' +
                         '</a>' +

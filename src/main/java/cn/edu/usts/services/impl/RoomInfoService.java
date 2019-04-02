@@ -28,7 +28,7 @@ public class RoomInfoService implements IRoomInfoService {
         double tc = totalCount;
         Double num =Math.ceil(tc/pageSize);//向上取整
         pageBean.setTotalPage(num.intValue());
-        List<RoomInfoModel> list=roominfoMapper.findRoomInfoBypage(currentPage,pageSize);
+        List<RoomInfoModel> list=roominfoMapper.findRoomInfoByPage(currentPage,pageSize);
         pageBean.setLists(list);
         return pageBean;
     }
