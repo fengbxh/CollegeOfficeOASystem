@@ -1,5 +1,6 @@
 package cn.edu.usts.mapper;
 
+import cn.edu.usts.model.RoomInfoModel;
 import cn.edu.usts.pojo.Roominfo;
 import cn.edu.usts.pojo.RoominfoExample;
 import java.util.List;
@@ -30,5 +31,5 @@ public interface RoominfoMapper {
 
     int selectCount();
 
-    List<Roominfo> findRoomByPage(@Param("pageIndex")Integer pageIndex,@Param("pageSize")Integer pageSize);
+    List<RoomInfoModel> findRoomInfoBypage(@Param("pageIndex")Integer pageIndex, @Param("pageSize")Integer pageSize);
 }
