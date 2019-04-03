@@ -26,129 +26,131 @@
 <div class="weadmin-body">
     <form class="layui-form" id="addform">
         <div class="layui-form-item">
-            <label for="L_teId" class="layui-form-label">
+            <label for="L_roomName" class="layui-form-label">
                 <span class="we-red">*</span>房间名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teId" name="teId" lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" id="L_roomName" name="roomName" lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_teName" class="layui-form-label">
+            <label for="s_roomTypeId" class="layui-form-label">
                 <span class="we-red">*</span>房间类型
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teName" name="teName" lay-verify="required" autocomplete="off"
-                       class="layui-input">
+                <select id="s_roomTypeId" name="roomTypeId" lay-filter="aihao">
+                    <option value=""></option>
+                    <option value="2">普通办公用房</option>
+                    <option value="3">校领导办公室</option>
+                </select>
             </div>
-
         </div>
         <div class="layui-form-item">
-            <label for="L_teAge" class="layui-form-label">
+            <label for="L_roomNumber" class="layui-form-label">
                 <span class="we-red">*</span>房间号
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teAge" name="teAge" lay-verify="required" autocomplete="" class="layui-input">
+                <input type="text" id="L_roomNumber" name="roomNumber" lay-verify="required" autocomplete="" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_teBirthday" class="layui-form-label">
+            <label for="L_floor" class="layui-form-label">
                 <span class="we-red">*</span>楼层
             </label>
             <div class="layui-input-inline">
                 <input class="layui-input"
                        lay-verify="required"
-                       name="teBirthday" id="L_teBirthday">
+                       name="floor" id="L_floor">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_tePhone" class="layui-form-label">
+            <label for="L_buildingName" class="layui-form-label">
                 <span class="we-red">*</span>楼名
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_tePhone" name="tePhone" lay-verify="required|phone" autocomplete=""
+                <input type="text" id="L_buildingName" name="buildingName" lay-verify="required" autocomplete=""
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_education" class="layui-form-label">
+            <label for="L_usageArea" class="layui-form-label">
                 <span class="we-red">*</span>使用面积（平方米）
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_education" name="education"
+                <input type="text" id="L_usageArea" name="usageArea"
                        lay-verify="required" autocomplete="" class="layui-input">
             </div>
 
         </div>
         <div class="layui-form-item">
-            <label for="L_graduateSchool" class="layui-form-label">
+            <label for="L_campus" class="layui-form-label">
                 <span class="we-red">*</span>校区
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_graduateSchool" name="graduateSchool" autocomplete="off" class="layui-input">
+                <input type="text" id="L_campus" name="campus" autocomplete="off" class="layui-input">
             </div>
 
         </div>
         <div class="layui-form-item">
-            <label for="L_speciality" class="layui-form-label">
+            <label for="L_college" class="layui-form-label">
                 <span class="we-red">*</span>学院
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_speciality" name="speciality" autocomplete="off" class="layui-input">
+                <input type="text" id="L_college" name="college" autocomplete="off" class="layui-input">
             </div>
 
         </div>
         <div class="layui-form-item">
-            <label for="L_teEmail" class="layui-form-label">
+            <label for="L_keyAdministratorId" class="layui-form-label">
                 <span class="we-red">*</span>钥匙管理员
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_teEmail" name="teEmail" autocomplete="off" class="layui-input">
+                <input type="text" id="L_keyAdministratorId" name="keyAdministratorId" autocomplete="off" class="layui-input">
             </div>
 
         </div>
         <div class="layui-form-item">
-            <label for="L_officePhone" class="layui-form-label">
+            <label for="L_doorCount" class="layui-form-label">
                 <span class="we-red">*</span>房门数量
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_officePhone" name="officePhone" lay-verify="required" autocomplete=""
+                <input type="text" id="L_doorCount" name="doorCount" lay-verify="required" autocomplete=""
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_postalAddress" class="layui-form-label">
+            <label for="L_areaUnit" class="layui-form-label">
                 <span class="we-red">*</span>面积单元
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_postalAddress" name="postalAddress" lay-verify="required" autocomplete=""
+                <input type="text" id="L_areaUnit" name="areaUnit" lay-verify="required" autocomplete=""
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_otherContact" class="layui-form-label">
+            <label for="L_reserveUnit" class="layui-form-label">
                 <span class="we-red">*</span>预留单元
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_otherContact" name="otherContact" lay-verify="required" autocomplete=""
+                <input type="text" id="L_reserveUnit" name="reserveUnit" lay-verify="required" autocomplete=""
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_seniorTalentProject" class="layui-form-label">
+            <label for="L_doorplatesCount" class="layui-form-label">
                 <span class="we-red">*</span>门牌数量
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_seniorTalentProject" name="seniorTalentProject" lay-verify="required"
+                <input type="text" id="L_doorplatesCount" name="doorplatesCount" lay-verify="required"
                        autocomplete="" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label for="L_socialSecurityId" class="layui-form-label">
+            <label for="L_remarks" class="layui-form-label">
                 <span class="we-red">*</span>备注
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="L_socialSecurityId" name="teacheroccupationalinfo.socialSecurityId"
+                <input type="text" id="L_remarks" name="remarks"
                        lay-verify="required" autocomplete=""
                        class="layui-input">
             </div>
@@ -178,7 +180,7 @@
                 type: "POST",
                 data: $("#addform").serialize(),
                 dataType: "json",
-                url: "/teacher/addTeacher",
+                url: "/room/addRoomInfo",
                 success: function (result) {
                     if (result.code == 200) {
                         layer.alert("添加成功", {icon: 6});

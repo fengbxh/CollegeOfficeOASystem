@@ -101,7 +101,11 @@ layui.use(['treeGird', 'jquery', 'admin', 'layer'], function() {
 					"name": "子节点21",
 					"children": [{
 						"id": "211",
-						"name": "子节点211"
+						"name": "子节点211",
+						"children":[{
+							"id": "222",
+							"name":"test"
+						}]
 					}]
 				}]
 			}
