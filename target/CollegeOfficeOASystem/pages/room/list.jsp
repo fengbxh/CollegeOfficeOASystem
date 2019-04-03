@@ -37,10 +37,10 @@
         <form class="layui-form layui-col-md12 we-search">
             关键字查询：
             <div class="layui-inline">
-                <input type="text" name="username" placeholder="职工号" autocomplete="off" class="layui-input">
+                <input type="text" name="username" placeholder="房号" autocomplete="off" class="layui-input">
             </div>
             <div class="layui-inline">
-                <input type="text" name="username" placeholder="姓名" autocomplete="off" class="layui-input">
+                <input type="text" name="username" placeholder="房间名称" autocomplete="off" class="layui-input">
             </div>
             <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>

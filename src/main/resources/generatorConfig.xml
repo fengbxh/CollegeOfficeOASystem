@@ -35,8 +35,10 @@
         <!-- 要生成哪些表-->
         <!--<table tableName="TeacherOccupationalInfo"/>-->
         <!--<table tableName="TeacherPersonalInfo"/>-->
-        <table tableName="RoomInfo" />
-        <table tableName="RoomType" />
-        <table tableName="RoomUserMaps" />
+        <!--<table tableName="RoomInfo" />-->
+        <!--<table tableName="RoomType" />-->
+        <!--<table tableName="RoomUserMaps" />-->
+        <table tableName="OfficeSuppliesInfo" />
+        <table tableName="IssueRecord" />
     </context>
 </generatorConfiguration>
