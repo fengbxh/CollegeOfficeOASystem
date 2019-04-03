@@ -31,5 +31,7 @@ public interface RoominfoMapper {
 
     int selectCount();
 
+    List<RoomInfoModel> findRoomInfo();
+
     List<RoomInfoModel> findRoomInfoByPage(@Param("pageIndex")Integer pageIndex, @Param("pageSize")Integer pageSize);
 }

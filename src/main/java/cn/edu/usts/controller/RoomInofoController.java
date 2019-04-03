@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("room")
 public class RoomInofoController {
@@ -27,4 +29,18 @@ public class RoomInofoController {
             return null;
         }
     }
+
+    //用于导出房间信息
+    @RequestMapping(value = "/findRoomInfo", method = RequestMethod.GET)
+    @ResponseBody
+    public List<RoomInfoModel> findRoomInfo()
+    {
+        try{
+            List<RoomInfoModel> list = roomInfoService.findRoomInfo();
+            return list;
+        } catch (Exception ex){
+            return null;
+        }
+    }
+
 }

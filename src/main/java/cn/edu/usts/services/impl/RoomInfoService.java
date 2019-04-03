@@ -32,4 +32,9 @@ public class RoomInfoService implements IRoomInfoService {
         pageBean.setLists(list);
         return pageBean;
     }
+
+    @Override
+    public List<RoomInfoModel> findRoomInfo() {
+        return roominfoMapper.findRoomInfo();
+    }
 }

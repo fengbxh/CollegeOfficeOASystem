@@ -35,6 +35,34 @@
     <select id="selectCount" resultType="int">
 		select count(*) from RoomInfo
     </select>
+    <select id="findRoomInfo" parameterType="java.lang.Integer" resultMap="PageResultMap">
+        SELECT
+        p.ID,
+        campus,
+        college,
+        building_name,
+        p.floor,
+        room_number,
+        room_name,
+        RoomType.room_classification,
+        usage_area,
+        stuff((
+            SELECT
+                ',' + TeacherPersonalInfo.te_name ++'('+TeacherPersonalInfo.te_id +')'
+            FROM
+                RoomUserMaps
+                INNER JOIN TeacherPersonalInfo ON TeacherPersonalInfo.te_id = RoomUserMaps.teacher_id
+            WHERE
+                p.ID = RoomUserMaps.roominfo_id FOR xml path ( '' )),
+            1,
+            1,
+            ''
+        ) AS username
+    from (select row_number() over(order by ID asc) as rownumber,* from RoomInfo) as p
+
+        LEFT JOIN RoomType ON RoomType.ID = p.room_type_id
+    </select>
+    <!-- 分页查找所有的分页信息-->
     <select id="findRoomInfoByPage" parameterType="java.lang.Integer" resultMap="PageResultMap">
         SELECT top ${pageSize}
         p.ID,
