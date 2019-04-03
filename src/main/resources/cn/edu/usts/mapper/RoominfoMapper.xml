@@ -187,13 +187,13 @@
         </if>
     </delete>
     <insert id="insert" parameterType="cn.edu.usts.pojo.Roominfo">
-    insert into RoomInfo (ID, room_name, room_type_id, 
+    insert into RoomInfo (room_name, room_type_id,
       status, room_number, floor, 
       building_name, usage_area, campus, 
       college, key_administrator_id, door_count, 
       area_unit, reserve_unit, doorPlates_count, 
       remarks)
-    values (#{id,jdbcType=INTEGER}, #{roomName,jdbcType=NVARCHAR}, #{roomTypeId,jdbcType=NVARCHAR}, 
+    values ( #{roomName,jdbcType=NVARCHAR}, #{roomTypeId,jdbcType=NVARCHAR},
       #{status,jdbcType=INTEGER}, #{roomNumber,jdbcType=NVARCHAR}, #{floor,jdbcType=INTEGER}, 
       #{buildingName,jdbcType=NVARCHAR}, #{usageArea,jdbcType=DECIMAL}, #{campus,jdbcType=NVARCHAR}, 
       #{college,jdbcType=NVARCHAR}, #{keyAdministratorId,jdbcType=INTEGER}, #{doorCount,jdbcType=INTEGER}, 

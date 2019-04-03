@@ -209,17 +209,17 @@
     }
 
     function del(obj) {
-        var teId = $(obj).parents("tr").find("td[name^='teId']").html();
-        layer.confirm('确认要删除工号为：' + teId + "的记录吗？", function (index) {
+        var Id = $(obj).parents("tr").find("td[name^='Id']").html();
+        layer.confirm('确认要删除ID为：' + Id + "的记录吗？", function (index) {
             //console.log($(obj).parents("tr").children('td').eq(1).text());
             //console.log($(obj).parents("tr").find("td[name^='teId']").html());
 
             //发异步删除数据
             $.ajax({
-                url: '/teacher/deleteTeacher',
+                url: '/room/deleteRoomInfo',
                 type: 'post',
                 data: {
-                    "teId": teId,
+                    "Id": Id,
                 },
                 dataType: 'json',
                 success: function (res) {

@@ -93,38 +93,15 @@
     function myExport() {
         layer.confirm('确认要导出吗？', function (index) {
             $.ajax({
-                url: '/teacher/selectTeacher',
+                url: '/room/findRoomInfo',
                 type: 'get',
                 dataType: 'json',
                 success: function (res) {
-                    var len = res.length;
-                    for (var i = 0; i < len; i++) {
-                        res[i].socialSecurityId = res[i].teacheroccupationalinfo.socialSecurityId;
-                        res[i].unit = res[i].teacheroccupationalinfo.unit;
-                        res[i].interiorDepartment = res[i].teacheroccupationalinfo.interiorDepartment;
-                        res[i].participationDate = res[i].teacheroccupationalinfo.participationDate;
-                        res[i].continuousWorkingDate = res[i].teacheroccupationalinfo.continuousWorkingDate;
-                        res[i].postCategory = res[i].teacheroccupationalinfo.postCategory;
-                        res[i].presentPosition = res[i].teacheroccupationalinfo.presentPosition;
-                        res[i].presentPosition2 = res[i].teacheroccupationalinfo.presentPosition2;
-                        res[i].jobLevel = res[i].teacheroccupationalinfo.jobLevel;
-                        res[i].technicalPosition = res[i].teacheroccupationalinfo.technicalPosition;
-                        res[i].presentTechnicalPositionDate = res[i].teacheroccupationalinfo.presentTechnicalPositionDate;
-                        res[i].jobLevelDate = res[i].teacheroccupationalinfo.jobLevelDate;
-                        res[i].presentPost = res[i].teacheroccupationalinfo.presentPost;
-                        res[i].leadingRank = res[i].teacheroccupationalinfo.leadingRank;
-                        res[i].nonLeadingRank = res[i].teacheroccupationalinfo.nonLeadingRank;
-                        res[i].presentJobDate = res[i].teacheroccupationalinfo.presentJobDate;
-                        res[i].startDate = res[i].teacheroccupationalinfo.startDate;
-                        res[i].technicalLevel = res[i].teacheroccupationalinfo.technicalLevel;
-                        res[i].technicalLevelDate = res[i].teacheroccupationalinfo.technicalLevelDate;
-                        delete res[i].teacheroccupationalinfo;
-                    }
-                    var title = JSON.parse("{\"teId\":\"工号\",\"teName\":\"姓名\",\"teAge\":\"年龄\",\"teBirthday\":\"生日\",\"education\":\"学历\",\"graduateSchool\":\"毕业学校\",\"speciality\":\"所学专业\",\"teEmail\":\"电子邮箱\",\"tePhone\":\"手机号码\",\"officePhone\":\"办公室号码\",\"postalAddress\":\"通讯地址\",\"otherContact\":\"其他联系方式\",\"seniorTalentProject\":\"高级人才工程\",\"socialSecurityId\":\"社保编号\",\"unit\":\"单位\",\"interiorDepartment\":\"内设部门\",\"participationDate\":\"参加工作日\",\"continuousWorkingDate\":\"连续工龄时间\",\"postCategory\":\"岗位类别\",\"presentPosition\":\"现聘岗位\",\"presentPosition2\":\"现聘岗位2\",\"jobLevel\":\"职称等级\",\"technicalPosition\":\"专业技术职务\",\"presentTechnicalPositionDate\":\"现专业技术职务时间\",\"jobLevelDate\":\"职称等级时间\",\"presentPost\":\"现职务\",\"leadingRank\":\"领导职级\",\"nonLeadingRank\":\"非领导职级\",\"presentJobDate\":\"现职时间\",\"startDate\":\"始职时间\",\"technicalLevel\":\"工人技术等级\",\"technicalLevelDate\":\"工人技术等级时间\"}");
+                    var title = JSON.parse("{\"id\":\"ID\",\"campus\":\"校区\",\"college\":\"学院\",\"buildingName\":\"所属楼名\",\"floor\":\"所在楼层\",\"roomNumber\":\"房间号\",\"roomName\":\"房间名\",\"roomClassification\":\"房间类型\",\"usageArea\":\"使用面积\",\"userName\":\"使用者\"}");
                     res.unshift(title);
                     console.log(res);
                     var sheet = XLSX.utils.json_to_sheet(res, {skipHeader: true});
-                    openDownloadDialog(sheet2blob(sheet), '教师信息.xlsx');
+                    openDownloadDialog(sheet2blob(sheet), '房间信息.xlsx');
                 }
             });
             layer.msg('成功导出!', {
@@ -232,17 +209,17 @@
     }
 
     function del(obj) {
-        var teId=$(obj).parents("tr").find("td[name^='teId']").html();
-        layer.confirm('确认要删除工号为：'+teId+"的记录吗？", function (index) {
+        var Id = $(obj).parents("tr").find("td[name^='Id']").html();
+        layer.confirm('确认要删除ID为：' + Id + "的记录吗？", function (index) {
             //console.log($(obj).parents("tr").children('td').eq(1).text());
             //console.log($(obj).parents("tr").find("td[name^='teId']").html());
 
             //发异步删除数据
             $.ajax({
-                url: '/teacher/deleteTeacher',
+                url: '/room/deleteRoomInfo',
                 type: 'post',
                 data: {
-                    "teId": teId,
+                    "Id": Id,
                 },
                 dataType: 'json',
                 success: function (res) {

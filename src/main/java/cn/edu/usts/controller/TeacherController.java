@@ -21,6 +21,7 @@ import java.util.List;
 public class TeacherController {
     @Autowired
     private TeacherpersonalService teacherpersonalService;
+
     //根据用户ID删除教师全部信息
     @RequestMapping(value = "/deleteTeacher", method = RequestMethod.POST)
     @ResponseBody
@@ -32,48 +33,50 @@ public class TeacherController {
             return Msg.fail();
         }
     }
+
     //分页查询教师的全部信息
     @RequestMapping(value = "/selectTeacherByPage", method = RequestMethod.POST)
     @ResponseBody
-    public PageBean<Teacherpersonalinfo> selectTeacher(@RequestParam(value="currentPage",defaultValue="1",required=false)int currentPage,Model model) {
+    public PageBean<Teacherpersonalinfo> selectTeacher(@RequestParam(value = "currentPage", defaultValue = "1", required = false) int currentPage, Model model) {
         try {
             PageBean<Teacherpersonalinfo> pageBean = teacherpersonalService.findAllBypage(currentPage);
-            return  pageBean;
-        }catch (Exception ex){
+            return pageBean;
+        } catch (Exception ex) {
             return null;
         }
     }
+
     //查询教师的全部查询，目前仅用于导出Excel表格
-    @RequestMapping(value="/selectTeacher",method = RequestMethod.GET)
+    @RequestMapping(value = "/selectTeacher", method = RequestMethod.GET)
     @ResponseBody
-    public List<Teacherpersonalinfo> selectTeacher(){
+    public List<Teacherpersonalinfo> selectTeacher() {
         try {
-            List<Teacherpersonalinfo> list =teacherpersonalService.findAll();
+            List<Teacherpersonalinfo> list = teacherpersonalService.findAll();
             return list;
-        }catch (Exception ex){
+        } catch (Exception ex) {
             return null;
         }
     }
+
     //添加一个教师信息
     @RequestMapping(value = "/addTeacher", method = RequestMethod.POST)
     @ResponseBody
-    public Msg addTeacher(Teacherpersonalinfo teacherpersonalinfo )  {
+    public Msg addTeacher(Teacherpersonalinfo teacherpersonalinfo) {
         try {
-            boolean result= teacherpersonalService.insertAllInfo(teacherpersonalinfo);
-            if (result){
+            boolean result = teacherpersonalService.insertAllInfo(teacherpersonalinfo);
+            if (result) {
                 return Msg.success();
-            }else
-            {
+            } else {
                 return Msg.fail();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return Msg.fail();
-        }
-        finally {
+        } finally {
 
         }
 
     }
+
     //用于日期的格式化
     @InitBinder
     protected void initBinder(WebDataBinder binder) {

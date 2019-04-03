@@ -5,6 +5,7 @@ import cn.edu.usts.pojo.PageBean;
 import cn.edu.usts.pojo.Teacherpersonalinfo;
 import cn.edu.usts.services.ITeacherpersonalinfoService;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -95,10 +96,10 @@ public class TeacherpersonalService implements ITeacherpersonalinfoService {
 
     @Override
     public PageBean<Teacherpersonalinfo> findAllBypage(int currentPage) {
-        PageBean<Teacherpersonalinfo> pageBean=new PageBean<>();
+        PageBean<Teacherpersonalinfo> pageBean = new PageBean<>();
         pageBean.setCurrPage(currentPage);
         //每页显示的数据
-        int pageSize=5;
+        int pageSize = 5;
         pageBean.setPageSize(pageSize);
 
         //封装总记录数
@@ -106,9 +107,9 @@ public class TeacherpersonalService implements ITeacherpersonalinfoService {
         pageBean.setTotalCount(totalCount);
         //封装总页数
         double tc = totalCount;
-        Double num =Math.ceil(tc/pageSize);//向上取整
+        Double num = Math.ceil(tc / pageSize);//向上取整
         pageBean.setTotalPage(num.intValue());
-        List<Teacherpersonalinfo> list=teacherMapper.findAllBypage(currentPage,pageSize);
+        List<Teacherpersonalinfo> list = teacherMapper.findAllBypage(currentPage, pageSize);
         pageBean.setLists(list);
         return pageBean;
     }
