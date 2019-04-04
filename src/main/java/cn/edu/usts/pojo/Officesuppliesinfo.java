@@ -13,6 +13,8 @@ public class Officesuppliesinfo {
 
     private Integer buyerId;
 
+    private String unit;
+
     public Integer getId() {
         return id;
     }
@@ -51,5 +53,13 @@ public class Officesuppliesinfo {
 
     public void setBuyerId(Integer buyerId) {
         this.buyerId = buyerId;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit == null ? null : unit.trim();
     }
 }

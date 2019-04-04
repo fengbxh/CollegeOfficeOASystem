@@ -7,6 +7,15 @@
     <result column="officeSupplies_count" property="officesuppliesCount" jdbcType="VARCHAR" />
     <result column="procurement_date" property="procurementDate" jdbcType="TIMESTAMP" />
     <result column="buyer_id" property="buyerId" jdbcType="INTEGER" />
+    <result column="unit" property="unit" jdbcType="NVARCHAR" />
+  </resultMap>
+  <resultMap id="PageResultMap" type="cn.edu.usts.model.OfficeSuppliesInfoModel">
+    <id column="ID" jdbcType="INTEGER" property="id"/>
+    <result column="officeSupplies_name" jdbcType="NVARCHAR" property="officesuppliesName"/>
+    <result column="officeSupplies_count" jdbcType="VARCHAR" property="officesuppliesCount"/>
+    <result column="procurement_date" jdbcType="TIMESTAMP" property="procurementDate"/>
+    <result column="unit" jdbcType="NVARCHAR" property="unit"/>
+    <result column="te_name" jdbcType="NVARCHAR" property="buyerName" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,8 +76,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, officeSupplies_name, officeSupplies_count, procurement_date, buyer_id
+    ID, officeSupplies_name, officeSupplies_count, procurement_date, buyer_id, unit
   </sql>
+  <select id="findOfficeSupplierInfoByPage" parameterType="java.lang.Integer" resultMap="PageResultMap">
+SELECT top ${pageSize}
+p.ID,
+officeSupplies_name,
+officeSupplies_count,
+procurement_date,
+unit,
+TeacherPersonalInfo.te_name
+FROM (SELECT row_number () OVER (ORDER BY ID ASC) AS rownumber,*FROM OfficeSuppliesInfo) AS p
+INNER JOIN TeacherPersonalInfo ON TeacherPersonalInfo.te_id = p.buyer_id
+where rownumber>((#{pageIndex}-1)*#{pageSize});
+</select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.usts.pojo.OfficesuppliesinfoExample" >
     select
     <if test="distinct" >
@@ -101,9 +122,11 @@
   </delete>
   <insert id="insert" parameterType="cn.edu.usts.pojo.Officesuppliesinfo" >
     insert into OfficeSuppliesInfo (ID, officeSupplies_name, officeSupplies_count, 
-      procurement_date, buyer_id)
+      procurement_date, buyer_id, unit
+      )
     values (#{id,jdbcType=INTEGER}, #{officesuppliesName,jdbcType=NVARCHAR}, #{officesuppliesCount,jdbcType=VARCHAR}, 
-      #{procurementDate,jdbcType=TIMESTAMP}, #{buyerId,jdbcType=INTEGER})
+      #{procurementDate,jdbcType=TIMESTAMP}, #{buyerId,jdbcType=INTEGER}, #{unit,jdbcType=NVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.usts.pojo.Officesuppliesinfo" >
     insert into OfficeSuppliesInfo
@@ -123,6 +146,9 @@
       <if test="buyerId != null" >
         buyer_id,
       </if>
+      <if test="unit != null" >
+        unit,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -139,6 +165,9 @@
       </if>
       <if test="buyerId != null" >
         #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="unit != null" >
+        #{unit,jdbcType=NVARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,6 +195,9 @@
       <if test="record.buyerId != null" >
         buyer_id = #{record.buyerId,jdbcType=INTEGER},
       </if>
+      <if test="record.unit != null" >
+        unit = #{record.unit,jdbcType=NVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -177,7 +209,8 @@
       officeSupplies_name = #{record.officesuppliesName,jdbcType=NVARCHAR},
       officeSupplies_count = #{record.officesuppliesCount,jdbcType=VARCHAR},
       procurement_date = #{record.procurementDate,jdbcType=TIMESTAMP},
-      buyer_id = #{record.buyerId,jdbcType=INTEGER}
+      buyer_id = #{record.buyerId,jdbcType=INTEGER},
+      unit = #{record.unit,jdbcType=NVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,6 +230,9 @@
       <if test="buyerId != null" >
         buyer_id = #{buyerId,jdbcType=INTEGER},
       </if>
+      <if test="unit != null" >
+        unit = #{unit,jdbcType=NVARCHAR},
+      </if>
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
@@ -205,7 +241,8 @@
     set officeSupplies_name = #{officesuppliesName,jdbcType=NVARCHAR},
       officeSupplies_count = #{officesuppliesCount,jdbcType=VARCHAR},
       procurement_date = #{procurementDate,jdbcType=TIMESTAMP},
-      buyer_id = #{buyerId,jdbcType=INTEGER}
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      unit = #{unit,jdbcType=NVARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

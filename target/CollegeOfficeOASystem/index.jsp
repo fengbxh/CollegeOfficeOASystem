@@ -103,7 +103,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="./pages/office/list.jsp">
+                        <a _href="./pages/office/purchaseList.jsp">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>办公用品购买</cite>
 
