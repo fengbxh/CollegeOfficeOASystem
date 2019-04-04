@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.usts.mapper.IssuerecordMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.usts.pojo.Issuerecord" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="officeSupplies_id" property="officesuppliesId" jdbcType="INTEGER" />
+    <result column="officeSupplies_count" property="officesuppliesCount" jdbcType="INTEGER" />
+    <result column="room_id" property="roomId" jdbcType="INTEGER" />
+    <result column="department" property="department" jdbcType="NVARCHAR" />
+    <result column="receiver_id" property="receiverId" jdbcType="INTEGER" />
+    <result column="collection_date" property="collectionDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, officeSupplies_id, officeSupplies_count, room_id, department, receiver_id, collection_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.edu.usts.pojo.IssuerecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from IssueRecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from IssueRecord
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from IssueRecord
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.edu.usts.pojo.IssuerecordExample" >
+    delete from IssueRecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.edu.usts.pojo.Issuerecord" >
+    insert into IssueRecord (ID, officeSupplies_id, officeSupplies_count, 
+      room_id, department, receiver_id, 
+      collection_date)
+    values (#{id,jdbcType=INTEGER}, #{officesuppliesId,jdbcType=INTEGER}, #{officesuppliesCount,jdbcType=INTEGER}, 
+      #{roomId,jdbcType=INTEGER}, #{department,jdbcType=NVARCHAR}, #{receiverId,jdbcType=INTEGER}, 
+      #{collectionDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.usts.pojo.Issuerecord" >
+    insert into IssueRecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="officesuppliesId != null" >
+        officeSupplies_id,
+      </if>
+      <if test="officesuppliesCount != null" >
+        officeSupplies_count,
+      </if>
+      <if test="roomId != null" >
+        room_id,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="receiverId != null" >
+        receiver_id,
+      </if>
+      <if test="collectionDate != null" >
+        collection_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="officesuppliesId != null" >
+        #{officesuppliesId,jdbcType=INTEGER},
+      </if>
+      <if test="officesuppliesCount != null" >
+        #{officesuppliesCount,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=NVARCHAR},
+      </if>
+      <if test="receiverId != null" >
+        #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDate != null" >
+        #{collectionDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.edu.usts.pojo.IssuerecordExample" resultType="java.lang.Integer" >
+    select count(*) from IssueRecord
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update IssueRecord
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.officesuppliesId != null" >
+        officeSupplies_id = #{record.officesuppliesId,jdbcType=INTEGER},
+      </if>
+      <if test="record.officesuppliesCount != null" >
+        officeSupplies_count = #{record.officesuppliesCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.roomId != null" >
+        room_id = #{record.roomId,jdbcType=INTEGER},
+      </if>
+      <if test="record.department != null" >
+        department = #{record.department,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.receiverId != null" >
+        receiver_id = #{record.receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="record.collectionDate != null" >
+        collection_date = #{record.collectionDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update IssueRecord
+    set ID = #{record.id,jdbcType=INTEGER},
+      officeSupplies_id = #{record.officesuppliesId,jdbcType=INTEGER},
+      officeSupplies_count = #{record.officesuppliesCount,jdbcType=INTEGER},
+      room_id = #{record.roomId,jdbcType=INTEGER},
+      department = #{record.department,jdbcType=NVARCHAR},
+      receiver_id = #{record.receiverId,jdbcType=INTEGER},
+      collection_date = #{record.collectionDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.usts.pojo.Issuerecord" >
+    update IssueRecord
+    <set >
+      <if test="officesuppliesId != null" >
+        officeSupplies_id = #{officesuppliesId,jdbcType=INTEGER},
+      </if>
+      <if test="officesuppliesCount != null" >
+        officeSupplies_count = #{officesuppliesCount,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null" >
+        room_id = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=NVARCHAR},
+      </if>
+      <if test="receiverId != null" >
+        receiver_id = #{receiverId,jdbcType=INTEGER},
+      </if>
+      <if test="collectionDate != null" >
+        collection_date = #{collectionDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.usts.pojo.Issuerecord" >
+    update IssueRecord
+    set officeSupplies_id = #{officesuppliesId,jdbcType=INTEGER},
+      officeSupplies_count = #{officesuppliesCount,jdbcType=INTEGER},
+      room_id = #{roomId,jdbcType=INTEGER},
+      department = #{department,jdbcType=NVARCHAR},
+      receiver_id = #{receiverId,jdbcType=INTEGER},
+      collection_date = #{collectionDate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
