@@ -10,25 +10,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/cn/edu/usts/services/ITeacherpersonalinfoService.java" line="19" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46bf414a-0b9a-40e9-96e8-72808d2ec4f8" name="Default" comment="版本号：0.0.10">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/edu/usts/model/OfficeSuppliesInfoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/usts/mapper/IssuerecordMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/usts/mapper/OfficesuppliesinfoMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/usts/pojo/Issuerecord.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/usts/pojo/IssuerecordExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/usts/pojo/Officesuppliesinfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cn/edu/usts/pojo/OfficesuppliesinfoExample.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cn/edu/usts/mapper/IssuerecordMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cn/edu/usts/mapper/OfficesuppliesinfoMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/office/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/office/purchaseList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/CollegeOfficeOASystem.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/CollegeOfficeOASystem.war" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/CollegeOfficeOASystem/WEB-INF/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/CollegeOfficeOASystem/WEB-INF/classes/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/CollegeOfficeOASystem/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/CollegeOfficeOASystem/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/CollegeOfficeOASystem/pages/office/list.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/generatorConfig.xml" afterDir="false" />
-    </list>
+    <list default="true" id="46bf414a-0b9a-40e9-96e8-72808d2ec4f8" name="Default" comment="版本号：0.0.11" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +22,7 @@
     <session id="318447659">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="2" />
@@ -63,7 +45,7 @@
           <entry key="JAVA" value="1061" />
           <entry key="JSP" value="348" />
           <entry key="JavaScript" value="45" />
-          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="PLAIN_TEXT" value="35" />
           <entry key="Properties" value="6" />
           <entry key="SQL" value="4" />
           <entry key="XML" value="573" />
@@ -383,7 +365,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554389713383" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554432222498" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="extract.method.default.visibility" value="private" />
@@ -696,7 +678,7 @@
       <workItem from="1554173447450" duration="1862000" />
       <workItem from="1554180687249" duration="15861000" />
       <workItem from="1554259002600" duration="18050000" />
-      <workItem from="1554385779808" duration="3012000" />
+      <workItem from="1554385779808" duration="3199000" />
     </task>
     <task id="LOCAL-00001" summary="新增三个表 房间管理">
       <created>1554174345029</created>
@@ -782,7 +764,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554285571566</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="版本号：0.0.11">
+      <created>1554389736241</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1554389736241</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -818,7 +807,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="237876000" />
+    <option name="totallyTimeSpent" value="238063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="830" extended-state="6" />
@@ -838,7 +827,7 @@
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32789117" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.40379405" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.40379405" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.37959182" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -880,7 +869,8 @@
     <MESSAGE value="0.0.8" />
     <MESSAGE value="版本号：0.0.9" />
     <MESSAGE value="版本号：0.0.10" />
-    <option name="LAST_COMMIT_MESSAGE" value="版本号：0.0.10" />
+    <MESSAGE value="版本号：0.0.11" />
+    <option name="LAST_COMMIT_MESSAGE" value="版本号：0.0.11" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
